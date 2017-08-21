@@ -1,27 +1,28 @@
 language: php
 
-php:
-  - 7.0
-  - 7.0snapshot
-  - 7.1
-  - 7.1snapshot
-  - master
+git:
+    depth: 1
 
 sudo: false
 
-before_install:
-  - composer self-update
-  - composer clear-cache
+matrix:
+    fast_finish: true
+    include:
+        - php: 5.6
+          env: COMPOSER_FLAGS="--prefer-stable --prefer-lowest"
+        - php: 7.0
+          env: COMPOSER_FLAGS="--prefer-stable"
+        - php: 7.1
+          env: COMPOSER_FLAGS="--prefer-stable"
+        - php: nightly
+          env: COMPOSER_FLAGS="--dev --ignore-platform-reqs"
+    allow_failures:
+        - php: nightly
 
 install:
-  - travis_retry composer update --no-interaction --no-ansi --no-progress --no-suggest --optimize-autoloader --prefer-stable
+    - travis_retry composer update $COMPOSER_FLAGS --no-interaction -v
+    - composer info -D | sort
 
 script:
-  - ./vendor/bin/phpunit --coverage-clover=coverage.xml
-
-after_success:
-  - bash <(curl -s https://codecov.io/bash)
-
-notifications:
-  email: false
-
+  - phpenv config-rm xdebug.ini || return 0
+  - ./vendor/bin/phpunit --verbose

@@ -1,4 +1,4 @@
-<?php declare(strict_types=1);
+<?php
 /*
  * This file is part of sebastian/diff.
  *
@@ -20,12 +20,12 @@ final class DiffOnlyOutputBuilder implements DiffOutputBuilderInterface
      */
     private $header;
 
-    public function __construct(string $header = "--- Original\n+++ New\n")
+    public function __construct($header = "--- Original\n+++ New\n")
     {
         $this->header = $header;
     }
 
-    public function getDiff(array $diff): string
+    public function getDiff(array $diff)
     {
         $buffer = \fopen('php://memory', 'r+b');
 

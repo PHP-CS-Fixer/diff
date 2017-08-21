@@ -1,4 +1,4 @@
-<?php declare(strict_types=1);
+<?php
 /*
  * This file is part of sebastian/diff.
  *
@@ -15,7 +15,7 @@ final class MemoryEfficientLongestCommonSubsequenceCalculator implements Longest
     /**
      * {@inheritdoc}
      */
-    public function calculate(array $from, array $to): array
+    public function calculate(array $from, array $to)
     {
         $cFrom = \count($from);
         $cTo   = \count($to);
@@ -58,7 +58,7 @@ final class MemoryEfficientLongestCommonSubsequenceCalculator implements Longest
         );
     }
 
-    private function length(array $from, array $to): array
+    private function length(array $from, array $to)
     {
         $current = \array_fill(0, \count($to) + 1, 0);
         $cFrom   = \count($from);
