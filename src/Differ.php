@@ -1,4 +1,4 @@
-<?php declare(strict_types=1);
+<?php
 /*
  * This file is part of sebastian/diff.
  *
@@ -58,7 +58,7 @@ final class Differ
      *
      * @return string
      */
-    public function diff($from, $to, LongestCommonSubsequenceCalculator $lcs = null): string
+    public function diff($from, $to, LongestCommonSubsequenceCalculator $lcs = null)
     {
         $from = $this->validateDiffInput($from);
         $to   = $this->validateDiffInput($to);
@@ -74,7 +74,7 @@ final class Differ
      *
      * @return string
      */
-    private function validateDiffInput($input): string
+    private function validateDiffInput($input)
     {
         if (!\is_array($input) && !\is_string($input)) {
             return (string) $input;
@@ -100,7 +100,7 @@ final class Differ
      *
      * @return array
      */
-    public function diffToArray($from, $to, LongestCommonSubsequenceCalculator $lcs = null): array
+    public function diffToArray($from, $to, LongestCommonSubsequenceCalculator $lcs = null)
     {
         if (\is_string($from)) {
             $from = $this->splitStringByLines($from);
@@ -171,7 +171,7 @@ final class Differ
      *
      * @return array
      */
-    private function splitStringByLines(string $input): array
+    private function splitStringByLines($input)
     {
         return \preg_split('/(.*\R)/', $input, -1, PREG_SPLIT_DELIM_CAPTURE | PREG_SPLIT_NO_EMPTY);
     }
@@ -182,7 +182,7 @@ final class Differ
      *
      * @return LongestCommonSubsequenceCalculator
      */
-    private function selectLcsImplementation(array $from, array $to): LongestCommonSubsequenceCalculator
+    private function selectLcsImplementation(array $from, array $to)
     {
         // We do not want to use the time-efficient implementation if its memory
         // footprint will probably exceed this value. Note that the footprint
@@ -219,7 +219,7 @@ final class Differ
      *
      * @return bool
      */
-    private function detectUnmatchedLineEndings(array $diff): bool
+    private function detectUnmatchedLineEndings(array $diff)
     {
         $newLineBreaks = ['' => true];
         $oldLineBreaks = ['' => true];
@@ -257,7 +257,7 @@ final class Differ
         return false;
     }
 
-    private function getLinebreak($line): string
+    private function getLinebreak($line)
     {
         if (!\is_string($line)) {
             return '';
@@ -279,7 +279,7 @@ final class Differ
         return "\n";
     }
 
-    private static function getArrayDiffParted(array &$from, array &$to): array
+    private static function getArrayDiffParted(array &$from, array &$to)
     {
         $start = [];
         $end   = [];

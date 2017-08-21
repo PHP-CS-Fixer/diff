@@ -1,4 +1,4 @@
-<?php declare(strict_types=1);
+<?php
 /*
  * This file is part of sebastian/diff.
  *
@@ -14,6 +14,7 @@ use PHPUnit\Framework\TestCase;
 use SebastianBergmann\Diff\Output\AbstractChunkOutputBuilder;
 use SebastianBergmann\Diff\Output\DiffOnlyOutputBuilder;
 use SebastianBergmann\Diff\Output\UnifiedDiffOutputBuilder;
+use SebastianBergmann\Diff\Tests\CommonChunksTestOutputBuilder;
 
 /**
  * @covers SebastianBergmann\Diff\Differ
@@ -62,7 +63,7 @@ final class DifferTest extends TestCase
      * @param string $to
      * @dataProvider textProvider
      */
-    public function testTextRepresentationOfDiffCanBeRenderedUsingTimeEfficientLcsImplementation(string $expected, string $from, string $to)
+    public function testTextRepresentationOfDiffCanBeRenderedUsingTimeEfficientLcsImplementation($expected, $from, $to)
     {
         $this->assertSame($expected, $this->differ->diff($from, $to, new TimeEfficientLongestCommonSubsequenceCalculator));
     }
@@ -84,7 +85,7 @@ final class DifferTest extends TestCase
      * @param string $to
      * @dataProvider textProvider
      */
-    public function testTextRepresentationOfDiffCanBeRenderedUsingMemoryEfficientLcsImplementation(string $expected, string $from, string $to)
+    public function testTextRepresentationOfDiffCanBeRenderedUsingMemoryEfficientLcsImplementation($expected, $from, $to)
     {
         $this->assertSame($expected, $this->differ->diff($from, $to, new MemoryEfficientLongestCommonSubsequenceCalculator));
     }
@@ -96,7 +97,7 @@ final class DifferTest extends TestCase
      * @param string $header
      * @dataProvider headerProvider
      */
-    public function testCustomHeaderCanBeUsed(string $expected, string $from, string $to, string $header)
+    public function testCustomHeaderCanBeUsed($expected, $from, $to, $header)
     {
         $differ = new Differ(new UnifiedDiffOutputBuilder($header));
 
@@ -149,7 +150,7 @@ final class DifferTest extends TestCase
      * @param Diff[] $expected
      * @dataProvider diffProvider
      */
-    public function testParser(string $diff, array $expected)
+    public function testParser($diff, array $expected)
     {
         $parser = new Parser;
         $result = $parser->parse($diff);
@@ -157,7 +158,7 @@ final class DifferTest extends TestCase
         $this->assertEquals($expected, $result);
     }
 
-    public function arrayProvider(): array
+    public function arrayProvider()
     {
         return [
             [
@@ -318,7 +319,7 @@ final class DifferTest extends TestCase
         ];
     }
 
-    public function textProvider(): array
+    public function textProvider()
     {
         return [
             [
@@ -409,7 +410,7 @@ EOF
         ];
     }
 
-    public function diffProvider(): array
+    public function diffProvider()
     {
         $serialized_arr = <<<EOL
 a:1:{i:0;O:27:"SebastianBergmann\Diff\Diff":3:{s:33:" SebastianBergmann\Diff\Diff from";s:7:"old.txt";s:31:" SebastianBergmann\Diff\Diff to";s:7:"new.txt";s:35:" SebastianBergmann\Diff\Diff chunks";a:3:{i:0;O:28:"SebastianBergmann\Diff\Chunk":5:{s:35:" SebastianBergmann\Diff\Chunk start";i:1;s:40:" SebastianBergmann\Diff\Chunk startRange";i:3;s:33:" SebastianBergmann\Diff\Chunk end";i:1;s:38:" SebastianBergmann\Diff\Chunk endRange";i:4;s:35:" SebastianBergmann\Diff\Chunk lines";a:4:{i:0;O:27:"SebastianBergmann\Diff\Line":2:{s:33:" SebastianBergmann\Diff\Line type";i:1;s:36:" SebastianBergmann\Diff\Line content";s:7:"2222111";}i:1;O:27:"SebastianBergmann\Diff\Line":2:{s:33:" SebastianBergmann\Diff\Line type";i:3;s:36:" SebastianBergmann\Diff\Line content";s:7:"1111111";}i:2;O:27:"SebastianBergmann\Diff\Line":2:{s:33:" SebastianBergmann\Diff\Line type";i:3;s:36:" SebastianBergmann\Diff\Line content";s:7:"1111111";}i:3;O:27:"SebastianBergmann\Diff\Line":2:{s:33:" SebastianBergmann\Diff\Line type";i:3;s:36:" SebastianBergmann\Diff\Line content";s:7:"1111111";}}}i:1;O:28:"SebastianBergmann\Diff\Chunk":5:{s:35:" SebastianBergmann\Diff\Chunk start";i:5;s:40:" SebastianBergmann\Diff\Chunk startRange";i:10;s:33:" SebastianBergmann\Diff\Chunk end";i:6;s:38:" SebastianBergmann\Diff\Chunk endRange";i:8;s:35:" SebastianBergmann\Diff\Chunk lines";a:11:{i:0;O:27:"SebastianBergmann\Diff\Line":2:{s:33:" SebastianBergmann\Diff\Line type";i:3;s:36:" SebastianBergmann\Diff\Line content";s:7:"1111111";}i:1;O:27:"SebastianBergmann\Diff\Line":2:{s:33:" SebastianBergmann\Diff\Line type";i:3;s:36:" SebastianBergmann\Diff\Line content";s:7:"1111111";}i:2;O:27:"SebastianBergmann\Diff\Line":2:{s:33:" SebastianBergmann\Diff\Line type";i:3;s:36:" SebastianBergmann\Diff\Line content";s:7:"1111111";}i:3;O:27:"SebastianBergmann\Diff\Line":2:{s:33:" SebastianBergmann\Diff\Line type";i:3;s:36:" SebastianBergmann\Diff\Line content";s:8:"+1121211";}i:4;O:27:"SebastianBergmann\Diff\Line":2:{s:33:" SebastianBergmann\Diff\Line type";i:3;s:36:" SebastianBergmann\Diff\Line content";s:7:"1111111";}i:5;O:27:"SebastianBergmann\Diff\Line":2:{s:33:" SebastianBergmann\Diff\Line type";i:3;s:36:" SebastianBergmann\Diff\Line content";s:8:"-1111111";}i:6;O:27:"SebastianBergmann\Diff\Line":2:{s:33:" SebastianBergmann\Diff\Line type";i:3;s:36:" SebastianBergmann\Diff\Line content";s:8:"-1111111";}i:7;O:27:"SebastianBergmann\Diff\Line":2:{s:33:" SebastianBergmann\Diff\Line type";i:3;s:36:" SebastianBergmann\Diff\Line content";s:8:"-2222222";}i:8;O:27:"SebastianBergmann\Diff\Line":2:{s:33:" SebastianBergmann\Diff\Line type";i:3;s:36:" SebastianBergmann\Diff\Line content";s:7:"2222222";}i:9;O:27:"SebastianBergmann\Diff\Line":2:{s:33:" SebastianBergmann\Diff\Line type";i:3;s:36:" SebastianBergmann\Diff\Line content";s:7:"2222222";}i:10;O:27:"SebastianBergmann\Diff\Line":2:{s:33:" SebastianBergmann\Diff\Line type";i:3;s:36:" SebastianBergmann\Diff\Line content";s:7:"2222222";}}}i:2;O:28:"SebastianBergmann\Diff\Chunk":5:{s:35:" SebastianBergmann\Diff\Chunk start";i:17;s:40:" SebastianBergmann\Diff\Chunk startRange";i:5;s:33:" SebastianBergmann\Diff\Chunk end";i:16;s:38:" SebastianBergmann\Diff\Chunk endRange";i:6;s:35:" SebastianBergmann\Diff\Chunk lines";a:6:{i:0;O:27:"SebastianBergmann\Diff\Line":2:{s:33:" SebastianBergmann\Diff\Line type";i:3;s:36:" SebastianBergmann\Diff\Line content";s:7:"2222222";}i:1;O:27:"SebastianBergmann\Diff\Line":2:{s:33:" SebastianBergmann\Diff\Line type";i:3;s:36:" SebastianBergmann\Diff\Line content";s:7:"2222222";}i:2;O:27:"SebastianBergmann\Diff\Line":2:{s:33:" SebastianBergmann\Diff\Line type";i:3;s:36:" SebastianBergmann\Diff\Line content";s:7:"2222222";}i:3;O:27:"SebastianBergmann\Diff\Line":2:{s:33:" SebastianBergmann\Diff\Line type";i:3;s:36:" SebastianBergmann\Diff\Line content";s:8:"+2122212";}i:4;O:27:"SebastianBergmann\Diff\Line":2:{s:33:" SebastianBergmann\Diff\Line type";i:3;s:36:" SebastianBergmann\Diff\Line content";s:7:"2222222";}i:5;O:27:"SebastianBergmann\Diff\Line":2:{s:33:" SebastianBergmann\Diff\Line type";i:3;s:36:" SebastianBergmann\Diff\Line content";s:7:"2222222";}}}}}}
@@ -430,14 +431,14 @@ EOL;
      * @param string $header
      * @dataProvider textForNoNonDiffLinesProvider
      */
-    public function testDiffDoNotShowNonDiffLines(string $expected, string $from, string $to, string $header = '')
+    public function testDiffDoNotShowNonDiffLines($expected, $from, $to, $header = '')
     {
         $differ = new Differ(new DiffOnlyOutputBuilder($header));
 
         $this->assertSame($expected, $differ->diff($from, $to));
     }
 
-    public function textForNoNonDiffLinesProvider(): array
+    public function textForNoNonDiffLinesProvider()
     {
         return [
             [
@@ -475,6 +476,9 @@ EOL;
         ];
     }
 
+    /**
+     * @requires PHPUnit 6.0
+     */
     public function testDiffToArrayInvalidFromType()
     {
         $this->expectException('\InvalidArgumentException');
@@ -483,6 +487,9 @@ EOL;
         $this->differ->diffToArray(null, '');
     }
 
+    /**
+     * @requires PHPUnit 6.0
+     */
     public function testDiffInvalidToType()
     {
         $this->expectException('\InvalidArgumentException');
@@ -498,19 +505,9 @@ EOL;
      * @param int    $lineThreshold
      * @dataProvider provideGetCommonChunks
      */
-    public function testGetCommonChunks(array $expected, string $from, string $to, int $lineThreshold = 5)
+    public function testGetCommonChunks(array $expected, $from, $to, $lineThreshold = 5)
     {
-        $output = new class extends AbstractChunkOutputBuilder {
-            public function getDiff(array $diff): string
-            {
-                return '';
-            }
-
-            public function getChunks(array $diff, $lineThreshold)
-            {
-                return $this->getCommonChunks($diff, $lineThreshold);
-            }
-        };
+        $output = new CommonChunksTestOutputBuilder();
 
         $this->assertSame(
             $expected,
@@ -518,7 +515,7 @@ EOL;
         );
     }
 
-    public function provideGetCommonChunks(): array
+    public function provideGetCommonChunks()
     {
         return[
             'same (with default threshold)' => [
@@ -623,7 +620,7 @@ EOL;
      * @param string $input
      * @dataProvider provideSplitStringByLinesCases
      */
-    public function testSplitStringByLines(array $expected, string $input)
+    public function testSplitStringByLines(array $expected, $input)
     {
         $reflection = new \ReflectionObject($this->differ);
         $method     = $reflection->getMethod('splitStringByLines');
@@ -632,7 +629,7 @@ EOL;
         $this->assertSame($expected, $method->invoke($this->differ, $input));
     }
 
-    public function provideSplitStringByLinesCases(): array
+    public function provideSplitStringByLinesCases()
     {
         return [
             [
@@ -710,7 +707,7 @@ EOL;
         $this->assertSame($expected, $differ->diff($from, $to));
     }
 
-    public function provideDiffWithLineNumbers(): array
+    public function provideDiffWithLineNumbers()
     {
         return [
             'diff line 1 non_patch_compat' => [
@@ -1024,6 +1021,9 @@ EOF
         );
     }
 
+    /**
+     * @requires PHPUnit 6.0
+     */
     public function testConstructorInvalidArgInt()
     {
         $this->expectException(InvalidArgumentException::class);
@@ -1032,6 +1032,9 @@ EOF
         new Differ(1);
     }
 
+    /**
+     * @requires PHPUnit 6.0
+     */
     public function testConstructorInvalidArgObject()
     {
         $this->expectException(InvalidArgumentException::class);

@@ -1,4 +1,4 @@
-<?php declare(strict_types=1);
+<?php
 /*
  * This file is part of sebastian/diff.
  *
@@ -20,7 +20,7 @@ final class Parser
      *
      * @return Diff[]
      */
-    public function parse(string $string): array
+    public function parse($string)
     {
         $lines = \preg_split('(\r\n|\r|\n)', $string);
 
