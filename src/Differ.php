@@ -8,10 +8,10 @@
  * file that was distributed with this source code.
  */
 
-namespace SebastianBergmann\Diff;
+namespace PhpCsFixer\Diff;
 
-use SebastianBergmann\Diff\Output\DiffOutputBuilderInterface;
-use SebastianBergmann\Diff\Output\UnifiedDiffOutputBuilder;
+use PhpCsFixer\Diff\Output\DiffOutputBuilderInterface;
+use PhpCsFixer\Diff\Output\UnifiedDiffOutputBuilder;
 
 /**
  * Diff implementation.
