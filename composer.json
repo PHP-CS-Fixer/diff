@@ -1,5 +1,5 @@
 {
-    "name": "PHP-CS-Fixer/diff",
+    "name": "php-cs-fixer/diff",
     "description": "sebastian/diff v2 backport support for PHP5.6",
     "keywords": ["diff"],
     "homepage": "https://github.com/PHP-CS-Fixer",
