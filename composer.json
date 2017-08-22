@@ -26,6 +26,6 @@
         ]
     },
     "autoload-dev": {
-        "psr-4": { "SebastianBergmann\\Diff\\Tests\\": "tests/" }
+        "psr-4": { "PhpCsFixer\\Diff\\Tests\\": "tests/" }
     }
 }

@@ -8,9 +8,9 @@
  * file that was distributed with this source code.
  */
 
-namespace SebastianBergmann\Diff\Tests;
+namespace PhpCsFixer\Diff\Tests;
 
-use SebastianBergmann\Diff\Output\AbstractChunkOutputBuilder;
+use PhpCsFixer\Diff\Output\AbstractChunkOutputBuilder;
 
 /**
  * @author SpacePossum
