@@ -1,4 +1,4 @@
-<?php declare(strict_types=1);
+<?php
 /*
  * This file is part of sebastian/diff.
  *
@@ -52,7 +52,7 @@ final class DifferTestTest extends TestCase
         return $tests;
     }
 
-    private function runThisTest(string $expected, string $from, string $to)
+    private function runThisTest($expected, $from, $to)
     {
         $expected = \str_replace('--- Original', '--- from.txt', $expected);
         $expected = \str_replace('+++ New', '+++ from.txt', $expected);

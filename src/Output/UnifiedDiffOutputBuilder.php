@@ -1,4 +1,4 @@
-<?php declare(strict_types=1);
+<?php
 /*
  * This file is part of sebastian/diff.
  *
@@ -25,13 +25,13 @@ final class UnifiedDiffOutputBuilder extends AbstractChunkOutputBuilder
      */
     private $addLineNumbers;
 
-    public function __construct(string $header = "--- Original\n+++ New\n", bool $addLineNumbers = false)
+    public function __construct($header = "--- Original\n+++ New\n", $addLineNumbers = false)
     {
         $this->header         = $header;
         $this->addLineNumbers = $addLineNumbers;
     }
 
-    public function getDiff(array $diff): string
+    public function getDiff(array $diff)
     {
         $buffer = \fopen('php://memory', 'r+b');
 
@@ -104,12 +104,12 @@ final class UnifiedDiffOutputBuilder extends AbstractChunkOutputBuilder
     private function writeChunk(
         $output,
         array $diff,
-        int $diffStartIndex,
-        int $diffEndIndex,
-        int $fromStart,
-        int $fromRange,
-        int $toStart,
-        int $toRange
+        $diffStartIndex,
+        $diffEndIndex,
+        $fromStart,
+        $fromRange,
+        $toStart,
+        $toRange
     ) {
         if ($this->addLineNumbers) {
             \fwrite($output, '@@ -' . (1 + $fromStart));
@@ -144,7 +144,7 @@ final class UnifiedDiffOutputBuilder extends AbstractChunkOutputBuilder
         }
     }
 
-    private function getChunkRange(array $diff, int $diffStartIndex, int $diffEndIndex): array
+    private function getChunkRange(array $diff, $diffStartIndex, $diffEndIndex)
     {
         $toRange   = 0;
         $fromRange = 0;

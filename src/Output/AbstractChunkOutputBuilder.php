@@ -1,4 +1,4 @@
-<?php declare(strict_types=1);
+<?php
 /*
  * This file is part of sebastian/diff.
  *
@@ -21,7 +21,7 @@ abstract class AbstractChunkOutputBuilder implements DiffOutputBuilderInterface
      *
      * @return array
      */
-    protected function getCommonChunks(array $diff, int $lineThreshold = 5): array
+    protected function getCommonChunks(array $diff, $lineThreshold = 5)
     {
         $diffSize     = \count($diff);
         $capturing    = false;
