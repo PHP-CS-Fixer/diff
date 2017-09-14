@@ -26,6 +26,9 @@
         ]
     },
     "autoload-dev": {
-        "psr-4": { "PhpCsFixer\\Diff\\Tests\\": "tests/" }
+        "psr-4": {
+            "PhpCsFixer\\Diff\\v1_4\\Tests\\": "tests/v1_4",
+            "PhpCsFixer\\Diff\\v2_0\\Tests\\": "tests/v2_0"
+        }
     }
 }
