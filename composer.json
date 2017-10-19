@@ -3,7 +3,7 @@
     "description": "sebastian/diff v2 backport support for PHP5.6",
     "keywords": ["diff"],
     "homepage": "https://github.com/PHP-CS-Fixer",
-    "license": "BSD-3-Clause|MIT",
+    "license": "BSD-3-Clause",
     "authors": [
         {
             "name": "Sebastian Bergmann",
