@@ -1,6 +1,6 @@
 # PHP-CS-Fixer/diff
 
-This is version is for PHP CS Fixer only! Do not use it!
+This version is for PHP CS Fixer only! Do not use it!
 
 Code from `sebastian/diff` has been forked a republished by permission of Sebastian Bergmann.
 Licenced with BSD-3-Clause @ see LICENSE_DIFF, copyright (c) Sebastian Bergmann <sebastian@phpunit.de>
