@@ -1,4 +1,4 @@
-<?php declare(strict_types=1);
+<?php
 /*
  * This file is part of sebastian/diff.
  *
@@ -19,7 +19,7 @@ use PHPUnit\Framework\TestCase;
  */
 final class DiffTest extends TestCase
 {
-    public function testGettersAfterConstructionWithDefault(): void
+    public function testGettersAfterConstructionWithDefault()
     {
         $from = 'line1a';
         $to   = 'line2a';
@@ -30,7 +30,7 @@ final class DiffTest extends TestCase
         $this->assertSame([], $diff->getChunks(), 'Expect chunks to be default value "array()".');
     }
 
-    public function testGettersAfterConstructionWithChunks(): void
+    public function testGettersAfterConstructionWithChunks()
     {
         $from   = 'line1b';
         $to     = 'line2b';
@@ -43,7 +43,7 @@ final class DiffTest extends TestCase
         $this->assertSame($chunks, $diff->getChunks(), 'Expect chunks to be passed value.');
     }
 
-    public function testSetChunksAfterConstruction(): void
+    public function testSetChunksAfterConstruction()
     {
         $diff = new Diff('line1c', 'line2c');
         $this->assertSame([], $diff->getChunks(), 'Expect chunks to be default value "array()".');

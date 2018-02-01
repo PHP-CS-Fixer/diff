@@ -1,4 +1,4 @@
-<?php declare(strict_types=1);
+<?php
 /*
  * This file is part of sebastian/diff.
  *
@@ -37,7 +37,7 @@ final class Chunk
      */
     private $lines;
 
-    public function __construct(int $start = 0, int $startRange = 1, int $end = 0, int $endRange = 1, array $lines = [])
+    public function __construct($start = 0, $startRange = 1, $end = 0, $endRange = 1, array $lines = [])
     {
         $this->start      = $start;
         $this->startRange = $startRange;
@@ -46,32 +46,32 @@ final class Chunk
         $this->lines      = $lines;
     }
 
-    public function getStart(): int
+    public function getStart()
     {
         return $this->start;
     }
 
-    public function getStartRange(): int
+    public function getStartRange()
     {
         return $this->startRange;
     }
 
-    public function getEnd(): int
+    public function getEnd()
     {
         return $this->end;
     }
 
-    public function getEndRange(): int
+    public function getEndRange()
     {
         return $this->endRange;
     }
 
-    public function getLines(): array
+    public function getLines()
     {
         return $this->lines;
     }
 
-    public function setLines(array $lines): void
+    public function setLines(array $lines)
     {
         $this->lines = $lines;
     }

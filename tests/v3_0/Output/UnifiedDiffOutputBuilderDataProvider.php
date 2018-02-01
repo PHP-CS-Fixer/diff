@@ -1,4 +1,4 @@
-<?php declare(strict_types=1);
+<?php
 /*
  * This file is part of sebastian/diff.
  *
@@ -12,7 +12,7 @@ namespace PhpCsFixer\Diff\v3_0\Output;
 
 final class UnifiedDiffOutputBuilderDataProvider
 {
-    public static function provideDiffWithLineNumbers(): array
+    public static function provideDiffWithLineNumbers()
     {
         return [
             'diff line 1 non_patch_compat' => [
@@ -78,7 +78,7 @@ final class UnifiedDiffOutputBuilderDataProvider
                 "\n",
             ],
             'diff line endings non_patch_compat' => [
-                "--- Original\n+++ New\n@@ -1 +1 @@\n #Warning: Strings contain different line endings!\n-<?php\r\n+<?php\n",
+                "--- Original\n+++ New\n@@ -1 +1 @@\n #Warnings contain different line endings!\n-<?php\r\n+<?php\n",
                 "<?php\r\n",
                 "<?php\n",
             ],

@@ -1,4 +1,4 @@
-<?php declare(strict_types=1);
+<?php
 /*
  * This file is part of sebastian/diff.
  *
@@ -17,7 +17,7 @@ use PHPUnit\Framework\TestCase;
  */
 final class InvalidArgumentExceptionTest extends TestCase
 {
-    public function testInvalidArgumentException(): void
+    public function testInvalidArgumentException()
     {
         $previousException = new \LogicException();
         $message           = 'test';

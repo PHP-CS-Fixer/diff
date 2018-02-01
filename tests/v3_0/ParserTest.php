@@ -1,4 +1,4 @@
-<?php declare(strict_types=1);
+<?php
 /*
  * This file is part of sebastian/diff.
  *
@@ -27,12 +27,12 @@ final class ParserTest extends TestCase
      */
     private $parser;
 
-    protected function setUp(): void
+    protected function setUp()
     {
         $this->parser = new Parser;
     }
 
-    public function testParse(): void
+    public function testParse()
     {
         $content = FileUtils::getFileContent(__DIR__ . '/fixtures/patch.txt');
 
@@ -53,7 +53,7 @@ final class ParserTest extends TestCase
         $this->assertCount(4, $chunks[0]->getLines());
     }
 
-    public function testParseWithMultipleChunks(): void
+    public function testParseWithMultipleChunks()
     {
         $content = FileUtils::getFileContent(__DIR__ . '/fixtures/patch2.txt');
 
@@ -73,7 +73,7 @@ final class ParserTest extends TestCase
         $this->assertCount(4, $chunks[2]->getLines());
     }
 
-    public function testParseWithRemovedLines(): void
+    public function testParseWithRemovedLines()
     {
         $content = <<<A
 diff --git a/Test.txt b/Test.txt
@@ -116,7 +116,7 @@ A;
         $this->assertSame(Line::REMOVED, $line->getType());
     }
 
-    public function testParseDiffForMulitpleFiles(): void
+    public function testParseDiffForMulitpleFiles()
     {
         $content = <<<A
 diff --git a/Test.txt b/Test.txt

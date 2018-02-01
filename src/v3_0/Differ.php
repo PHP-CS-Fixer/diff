@@ -1,4 +1,4 @@
-<?php declare(strict_types=1);
+<?php
 /*
  * This file is part of sebastian/diff.
  *
@@ -18,11 +18,11 @@ use PhpCsFixer\Diff\v3_0\Output\UnifiedDiffOutputBuilder;
  */
 final class Differ
 {
-    public const OLD                     = 0;
-    public const ADDED                   = 1;
-    public const REMOVED                 = 2;
-    public const DIFF_LINE_END_WARNING   = 3;
-    public const NO_LINE_END_EOF_WARNING = 4;
+    const OLD                     = 0;
+    const ADDED                   = 1;
+    const REMOVED                 = 2;
+    const DIFF_LINE_END_WARNING   = 3;
+    const NO_LINE_END_EOF_WARNING = 4;
 
     /**
      * @var DiffOutputBuilderInterface
@@ -64,7 +64,7 @@ final class Differ
      *
      * @return string
      */
-    public function diff($from, $to, LongestCommonSubsequenceCalculator $lcs = null): string
+    public function diff($from, $to, LongestCommonSubsequenceCalculator $lcs = null)
     {
         $diff = $this->diffToArray(
             $this->normalizeDiffInput($from),
@@ -92,7 +92,7 @@ final class Differ
      *
      * @return array
      */
-    public function diffToArray($from, $to, LongestCommonSubsequenceCalculator $lcs = null): array
+    public function diffToArray($from, $to, LongestCommonSubsequenceCalculator $lcs = null)
     {
         if (\is_string($from)) {
             $from = $this->splitStringByLines($from);
@@ -106,7 +106,7 @@ final class Differ
             throw new InvalidArgumentException('"to" must be an array or string.');
         }
 
-        [$from, $to, $start, $end] = self::getArrayDiffParted($from, $to);
+        list($from, $to, $start, $end) = self::getArrayDiffParted($from, $to);
 
         if ($lcs === null) {
             $lcs = $this->selectLcsImplementation($from, $to);
@@ -150,7 +150,7 @@ final class Differ
         }
 
         if ($this->detectUnmatchedLineEndings($diff)) {
-            \array_unshift($diff, ["#Warning: Strings contain different line endings!\n", self::DIFF_LINE_END_WARNING]);
+            \array_unshift($diff, ["#Warnings contain different line endings!\n", self::DIFF_LINE_END_WARNING]);
         }
 
         return $diff;
@@ -179,7 +179,7 @@ final class Differ
      *
      * @return array
      */
-    private function splitStringByLines(string $input): array
+    private function splitStringByLines($input)
     {
         return \preg_split('/(.*\R)/', $input, -1, PREG_SPLIT_DELIM_CAPTURE | PREG_SPLIT_NO_EMPTY);
     }
@@ -190,7 +190,7 @@ final class Differ
      *
      * @return LongestCommonSubsequenceCalculator
      */
-    private function selectLcsImplementation(array $from, array $to): LongestCommonSubsequenceCalculator
+    private function selectLcsImplementation(array $from, array $to)
     {
         // We do not want to use the time-efficient implementation if its memory
         // footprint will probably exceed this value. Note that the footprint
@@ -227,7 +227,7 @@ final class Differ
      *
      * @return bool
      */
-    private function detectUnmatchedLineEndings(array $diff): bool
+    private function detectUnmatchedLineEndings(array $diff)
     {
         $newLineBreaks = ['' => true];
         $oldLineBreaks = ['' => true];
@@ -265,7 +265,7 @@ final class Differ
         return false;
     }
 
-    private function getLinebreak($line): string
+    private function getLinebreak($line)
     {
         if (!\is_string($line)) {
             return '';
@@ -287,7 +287,7 @@ final class Differ
         return "\n";
     }
 
-    private static function getArrayDiffParted(array &$from, array &$to): array
+    private static function getArrayDiffParted(array &$from, array &$to)
     {
         $start = [];
         $end   = [];

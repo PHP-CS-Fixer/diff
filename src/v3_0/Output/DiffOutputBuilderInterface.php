@@ -1,4 +1,4 @@
-<?php declare(strict_types=1);
+<?php
 /*
  * This file is part of sebastian/diff.
  *
@@ -16,5 +16,5 @@ namespace PhpCsFixer\Diff\v3_0\Output;
  */
 interface DiffOutputBuilderInterface
 {
-    public function getDiff(array $diff): string;
+    public function getDiff(array $diff);
 }

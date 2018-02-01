@@ -1,4 +1,4 @@
-<?php declare(strict_types=1);
+<?php
 /*
  * This file is part of sebastian/diff.
  *
@@ -30,7 +30,7 @@ final class UnifiedDiffOutputBuilderTest extends TestCase
      *
      * @dataProvider headerProvider
      */
-    public function testCustomHeaderCanBeUsed(string $expected, string $from, string $to, string $header): void
+    public function testCustomHeaderCanBeUsed($expected, $from, $to, $header)
     {
         $differ = new Differ(new UnifiedDiffOutputBuilder($header));
 
@@ -40,7 +40,7 @@ final class UnifiedDiffOutputBuilderTest extends TestCase
         );
     }
 
-    public function headerProvider(): array
+    public function headerProvider()
     {
         return [
             [
@@ -77,13 +77,13 @@ final class UnifiedDiffOutputBuilderTest extends TestCase
      *
      * @dataProvider provideDiffWithLineNumbers
      */
-    public function testDiffWithLineNumbers($expected, $from, $to): void
+    public function testDiffWithLineNumbers($expected, $from, $to)
     {
         $differ = new Differ(new UnifiedDiffOutputBuilder("--- Original\n+++ New\n", true));
         $this->assertSame($expected, $differ->diff($from, $to));
     }
 
-    public function provideDiffWithLineNumbers(): array
+    public function provideDiffWithLineNumbers()
     {
         return UnifiedDiffOutputBuilderDataProvider::provideDiffWithLineNumbers();
     }

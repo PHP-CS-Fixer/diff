@@ -1,4 +1,4 @@
-<?php declare(strict_types=1);
+<?php
 /*
  * This file is part of sebastian/diff.
  *
@@ -17,7 +17,7 @@ use PHPUnit\Framework\TestCase;
  */
 final class ConfigurationExceptionTest extends TestCase
 {
-    public function testConstructWithDefaults(): void
+    public function testConstructWithDefaults()
     {
         $e = new ConfigurationException('test', 'A', 'B');
 
@@ -26,7 +26,7 @@ final class ConfigurationExceptionTest extends TestCase
         $this->assertSame('Option "test" must be A, got "string#B".', $e->getMessage());
     }
 
-    public function testConstruct(): void
+    public function testConstruct()
     {
         $e = new ConfigurationException(
             'test',

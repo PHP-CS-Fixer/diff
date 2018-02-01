@@ -1,4 +1,4 @@
-<?php declare(strict_types=1);
+<?php
 /*
  * This file is part of sebastian/diff.
  *
@@ -20,10 +20,10 @@ final class ConfigurationException extends InvalidArgumentException
      * @param null|\Exception $previous
      */
     public function __construct(
-        string $option,
-        string $expected,
+        $option,
+        $expected,
         $value,
-        int $code = 0,
+        $code = 0,
         \Exception $previous = null
     ) {
         parent::__construct(

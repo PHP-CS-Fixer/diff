@@ -1,4 +1,4 @@
-<?php declare(strict_types=1);
+<?php
 /*
  * This file is part of sebastian/diff.
  *
@@ -36,7 +36,7 @@ final class StrictUnifiedDiffOutputBuilderIntegrationTest extends TestCase
 
     private $filePatch;
 
-    protected function setUp(): void
+    protected function setUp()
     {
         $this->dir       = \realpath(__DIR__ . '/../../fixtures/out') . '/';
         $this->fileFrom  = $this->dir . 'from.txt';
@@ -50,7 +50,7 @@ final class StrictUnifiedDiffOutputBuilderIntegrationTest extends TestCase
         $this->cleanUpTempFiles();
     }
 
-    protected function tearDown(): void
+    protected function tearDown()
     {
         $this->cleanUpTempFiles();
     }
@@ -68,7 +68,7 @@ final class StrictUnifiedDiffOutputBuilderIntegrationTest extends TestCase
      *
      * @dataProvider provideFilePairs
      */
-    public function testIntegrationUsingPHPFileInVendorGitApply(string $fileFrom, string $fileTo): void
+    public function testIntegrationUsingPHPFileInVendorGitApply($fileFrom, $fileTo)
     {
         $from = FileUtils::getFileContent($fileFrom);
         $to   = FileUtils::getFileContent($fileTo);
@@ -98,7 +98,7 @@ final class StrictUnifiedDiffOutputBuilderIntegrationTest extends TestCase
      *
      * @dataProvider provideFilePairs
      */
-    public function testIntegrationUsingPHPFileInVendorPatch(string $fileFrom, string $fileTo): void
+    public function testIntegrationUsingPHPFileInVendorPatch($fileFrom, $fileTo)
     {
         $from = FileUtils::getFileContent($fileFrom);
         $to   = FileUtils::getFileContent($fileTo);
@@ -124,7 +124,7 @@ final class StrictUnifiedDiffOutputBuilderIntegrationTest extends TestCase
      * @dataProvider provideSample
      * @dataProvider provideBasicDiffGeneration
      */
-    public function testIntegrationOfUnitTestCasesGitApply(string $expected, string $from, string $to): void
+    public function testIntegrationOfUnitTestCasesGitApply($expected, $from, $to)
     {
         $this->doIntegrationTestGitApply($expected, $from, $to);
     }
@@ -138,27 +138,27 @@ final class StrictUnifiedDiffOutputBuilderIntegrationTest extends TestCase
      * @dataProvider provideSample
      * @dataProvider provideBasicDiffGeneration
      */
-    public function testIntegrationOfUnitTestCasesPatch(string $expected, string $from, string $to): void
+    public function testIntegrationOfUnitTestCasesPatch($expected, $from, $to)
     {
         $this->doIntegrationTestPatch($expected, $from, $to);
     }
 
-    public function provideOutputBuildingCases(): array
+    public function provideOutputBuildingCases()
     {
         return StrictUnifiedDiffOutputBuilderDataProvider::provideOutputBuildingCases();
     }
 
-    public function provideSample(): array
+    public function provideSample()
     {
         return StrictUnifiedDiffOutputBuilderDataProvider::provideSample();
     }
 
-    public function provideBasicDiffGeneration(): array
+    public function provideBasicDiffGeneration()
     {
         return StrictUnifiedDiffOutputBuilderDataProvider::provideBasicDiffGeneration();
     }
 
-    public function provideFilePairs(): array
+    public function provideFilePairs()
     {
         $cases     = [];
         $fromFile  = __FILE__;
@@ -189,7 +189,7 @@ final class StrictUnifiedDiffOutputBuilderIntegrationTest extends TestCase
      *
      * @dataProvider provideBasicDiffGeneration
      */
-    public function testIntegrationDiffOutputBuilderVersusDiffCommand(string $diff, string $from, string $to): void
+    public function testIntegrationDiffOutputBuilderVersusDiffCommand($diff, $from, $to)
     {
         $this->assertNotSame('', $diff);
         $this->assertValidUnifiedDiffFormat($diff);
@@ -216,7 +216,7 @@ final class StrictUnifiedDiffOutputBuilderIntegrationTest extends TestCase
         $this->assertSame($diff, $output);
     }
 
-    private function doIntegrationTestGitApply(string $diff, string $from, string $to): void
+    private function doIntegrationTestGitApply($diff, $from, $to)
     {
         $this->assertNotSame('', $diff);
         $this->assertValidUnifiedDiffFormat($diff);
@@ -237,7 +237,7 @@ final class StrictUnifiedDiffOutputBuilderIntegrationTest extends TestCase
         $this->assertProcessSuccessful($p);
     }
 
-    private function doIntegrationTestPatch(string $diff, string $from, string $to): void
+    private function doIntegrationTestPatch($diff, $from, $to)
     {
         $this->assertNotSame('', $diff);
         $this->assertValidUnifiedDiffFormat($diff);
@@ -265,7 +265,7 @@ final class StrictUnifiedDiffOutputBuilderIntegrationTest extends TestCase
         );
     }
 
-    private function assertProcessSuccessful(Process $p): void
+    private function assertProcessSuccessful(Process $p)
     {
         $this->assertTrue(
             $p->isSuccessful(),
@@ -279,7 +279,7 @@ final class StrictUnifiedDiffOutputBuilderIntegrationTest extends TestCase
         );
     }
 
-    private function cleanUpTempFiles(): void
+    private function cleanUpTempFiles()
     {
         @\unlink($this->fileFrom . '.orig');
         @\unlink($this->fileFrom . '.rej');
@@ -288,7 +288,7 @@ final class StrictUnifiedDiffOutputBuilderIntegrationTest extends TestCase
         @\unlink($this->filePatch);
     }
 
-    private static function setDiffFileHeader(string $diff, string $file): string
+    private static function setDiffFileHeader($diff, $file)
     {
         $diffLines    = \preg_split('/(.*\R)/', $diff, -1, PREG_SPLIT_DELIM_CAPTURE | PREG_SPLIT_NO_EMPTY);
         $diffLines[0] = \preg_replace('#^\-\-\- .*#', '--- /' . $file, $diffLines[0], 1);

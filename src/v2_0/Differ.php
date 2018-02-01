@@ -158,7 +158,7 @@ final class Differ
         }
 
         if ($this->detectUnmatchedLineEndings($diff)) {
-            \array_unshift($diff, ["#Warning: Strings contain different line endings!\n", 3]);
+            \array_unshift($diff, ["#Warnings contain different line endings!\n", 3]);
         }
 
         return $diff;

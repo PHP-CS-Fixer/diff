@@ -1,4 +1,4 @@
-<?php declare(strict_types=1);
+<?php
 /*
  * This file is part of sebastian/diff.
  *
@@ -12,9 +12,9 @@ namespace PhpCsFixer\Diff\v3_0;
 
 final class Line
 {
-    public const ADDED     = 1;
-    public const REMOVED   = 2;
-    public const UNCHANGED = 3;
+    const ADDED     = 1;
+    const REMOVED   = 2;
+    const UNCHANGED = 3;
 
     /**
      * @var int
@@ -26,18 +26,18 @@ final class Line
      */
     private $content;
 
-    public function __construct(int $type = self::UNCHANGED, string $content = '')
+    public function __construct($type = self::UNCHANGED, $content = '')
     {
         $this->type    = $type;
         $this->content = $content;
     }
 
-    public function getContent(): string
+    public function getContent()
     {
         return $this->content;
     }
 
-    public function getType(): int
+    public function getType()
     {
         return $this->type;
     }

@@ -1,4 +1,4 @@
-<?php declare(strict_types=1);
+<?php
 /*
  * This file is part of sebastian/diff.
  *
@@ -15,7 +15,7 @@ final class TimeEfficientLongestCommonSubsequenceCalculator implements LongestCo
     /**
      * {@inheritdoc}
      */
-    public function calculate(array $from, array $to): array
+    public function calculate(array $from, array $to)
     {
         $common     = [];
         $fromLength = \count($from);

@@ -269,7 +269,7 @@ final class DifferTest extends TestCase
             'test line diff detection' => [
                 [
                     [
-                        "#Warning: Strings contain different line endings!\n",
+                        "#Warnings contain different line endings!\n",
                         self::WARNING,
                     ],
                     [
@@ -287,7 +287,7 @@ final class DifferTest extends TestCase
             'test line diff detection in array input' => [
                 [
                     [
-                        "#Warning: Strings contain different line endings!\n",
+                        "#Warnings contain different line endings!\n",
                         self::WARNING,
                     ],
                     [
@@ -384,12 +384,12 @@ EOF
                 "B\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1\n1",
             ],
             [
-                "--- Original\n+++ New\n@@ @@\n #Warning: Strings contain different line endings!\n-<?php\r\n+<?php\n",
+                "--- Original\n+++ New\n@@ @@\n #Warnings contain different line endings!\n-<?php\r\n+<?php\n",
                 "<?php\r\nA\n",
                 "<?php\nA\n",
             ],
             [
-                "--- Original\n+++ New\n@@ @@\n #Warning: Strings contain different line endings!\n-a\r\n+\n+c\r",
+                "--- Original\n+++ New\n@@ @@\n #Warnings contain different line endings!\n-a\r\n+\n+c\r",
                 "a\r\n",
                 "\nc\r",
             ],
@@ -414,7 +414,7 @@ EOF
     {
         return [
             [
-                " #Warning: Strings contain different line endings!\n-A\r\n+B\n",
+                " #Warnings contain different line endings!\n-A\r\n+B\n",
                 "A\r\n",
                 "B\n",
             ],
@@ -741,7 +741,7 @@ EOF
                 "\n",
             ],
             'diff line endings non_patch_compat' => [
-                "--- Original\n+++ New\n@@ -1 +1 @@\n #Warning: Strings contain different line endings!\n-<?php\r\n+<?php\n",
+                "--- Original\n+++ New\n@@ -1 +1 @@\n #Warnings contain different line endings!\n-<?php\r\n+<?php\n",
                 "<?php\r\n",
                 "<?php\n",
             ],

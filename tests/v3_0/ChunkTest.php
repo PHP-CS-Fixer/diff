@@ -1,4 +1,4 @@
-<?php declare(strict_types=1);
+<?php
 /*
  * This file is part of sebastian/diff.
  *
@@ -22,42 +22,42 @@ final class ChunkTest extends TestCase
      */
     private $chunk;
 
-    protected function setUp(): void
+    protected function setUp()
     {
         $this->chunk = new Chunk;
     }
 
-    public function testCanBeCreatedWithoutArguments(): void
+    public function testCanBeCreatedWithoutArguments()
     {
         $this->assertInstanceOf(Chunk::class, $this->chunk);
     }
 
-    public function testStartCanBeRetrieved(): void
+    public function testStartCanBeRetrieved()
     {
         $this->assertSame(0, $this->chunk->getStart());
     }
 
-    public function testStartRangeCanBeRetrieved(): void
+    public function testStartRangeCanBeRetrieved()
     {
         $this->assertSame(1, $this->chunk->getStartRange());
     }
 
-    public function testEndCanBeRetrieved(): void
+    public function testEndCanBeRetrieved()
     {
         $this->assertSame(0, $this->chunk->getEnd());
     }
 
-    public function testEndRangeCanBeRetrieved(): void
+    public function testEndRangeCanBeRetrieved()
     {
         $this->assertSame(1, $this->chunk->getEndRange());
     }
 
-    public function testLinesCanBeRetrieved(): void
+    public function testLinesCanBeRetrieved()
     {
         $this->assertSame([], $this->chunk->getLines());
     }
 
-    public function testLinesCanBeSet(): void
+    public function testLinesCanBeSet()
     {
         $this->assertSame([], $this->chunk->getLines());
 

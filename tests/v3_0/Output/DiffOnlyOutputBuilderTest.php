@@ -1,4 +1,4 @@
-<?php declare(strict_types=1);
+<?php
 /*
  * This file is part of sebastian/diff.
  *
@@ -29,18 +29,18 @@ final class DiffOnlyOutputBuilderTest extends TestCase
      *
      * @dataProvider textForNoNonDiffLinesProvider
      */
-    public function testDiffDoNotShowNonDiffLines(string $expected, string $from, string $to, string $header = ''): void
+    public function testDiffDoNotShowNonDiffLines($expected, $from, $to, $header = '')
     {
         $differ = new Differ(new DiffOnlyOutputBuilder($header));
 
         $this->assertSame($expected, $differ->diff($from, $to));
     }
 
-    public function textForNoNonDiffLinesProvider(): array
+    public function textForNoNonDiffLinesProvider()
     {
         return [
             [
-                " #Warning: Strings contain different line endings!\n-A\r\n+B\n",
+                " #Warnings contain different line endings!\n-A\r\n+B\n",
                 "A\r\n",
                 "B\n",
             ],

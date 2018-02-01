@@ -1,4 +1,4 @@
-<?php declare(strict_types=1);
+<?php
 /*
  * This file is part of sebastian/diff.
  *
@@ -96,7 +96,7 @@ final class StrictUnifiedDiffOutputBuilder implements DiffOutputBuilderInterface
         $this->contextLines        = $options['contextLines'];
     }
 
-    public function getDiff(array $diff): string
+    public function getDiff(array $diff)
     {
         if (0 === \count($diff)) {
             return '';
@@ -129,7 +129,7 @@ final class StrictUnifiedDiffOutputBuilder implements DiffOutputBuilderInterface
         ;
     }
 
-    private function writeDiffHunks($output, array $diff): void
+    private function writeDiffHunks($output, array $diff)
     {
         // detect "No newline at end of file" and insert into `$diff` if needed
 
@@ -271,14 +271,14 @@ final class StrictUnifiedDiffOutputBuilder implements DiffOutputBuilderInterface
 
     private function writeHunk(
         array $diff,
-        int $diffStartIndex,
-        int $diffEndIndex,
-        int $fromStart,
-        int $fromRange,
-        int $toStart,
-        int $toRange,
+        $diffStartIndex,
+        $diffEndIndex,
+        $fromStart,
+        $fromRange,
+        $toStart,
+        $toRange,
         $output
-    ): void {
+    ) {
         \fwrite($output, '@@ -' . $fromStart);
 
         if (!$this->collapseRanges || 1 !== $fromRange) {

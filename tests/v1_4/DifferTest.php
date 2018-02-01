@@ -227,7 +227,7 @@ class DifferTest extends TestCase
             'test line diff detection' => array(
                 array(
                     array(
-                        '#Warning: Strings contain different line endings!',
+                        '#Warnings contain different line endings!',
                         self::OLD,
                     ),
                     array(

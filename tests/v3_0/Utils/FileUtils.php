@@ -1,4 +1,4 @@
-<?php declare(strict_types=1);
+<?php
 /*
  * This file is part of sebastian/diff.
  *
@@ -12,7 +12,7 @@ namespace PhpCsFixer\Diff\v3_0\Utils;
 
 final class FileUtils
 {
-    public static function getFileContent(string $file): string
+    public static function getFileContent($file)
     {
         $content = @\file_get_contents($file);
         if (false === $content) {

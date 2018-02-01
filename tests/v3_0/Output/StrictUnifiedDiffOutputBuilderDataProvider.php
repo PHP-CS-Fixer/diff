@@ -1,4 +1,4 @@
-<?php declare(strict_types=1);
+<?php
 /*
  * This file is part of sebastian/diff.
  *
@@ -12,7 +12,7 @@ namespace PhpCsFixer\Diff\v3_0\Output;
 
 final class StrictUnifiedDiffOutputBuilderDataProvider
 {
-    public static function provideOutputBuildingCases(): array
+    public static function provideOutputBuildingCases()
     {
         return [
             [
@@ -73,7 +73,7 @@ final class StrictUnifiedDiffOutputBuilderDataProvider
         ];
     }
 
-    public static function provideSample(): array
+    public static function provideSample()
     {
         return [
             [
@@ -98,7 +98,7 @@ final class StrictUnifiedDiffOutputBuilderDataProvider
         ];
     }
 
-    public static function provideBasicDiffGeneration(): array
+    public static function provideBasicDiffGeneration()
     {
         return [
             [

@@ -1,4 +1,4 @@
-<?php declare(strict_types=1);
+<?php
 /*
  * This file is part of sebastian/diff.
  *
@@ -12,6 +12,18 @@ namespace PhpCsFixer\Diff\v3_0\Output;
 
 use PHPUnit\Framework\TestCase;
 use PhpCsFixer\Diff\v3_0\Differ;
+
+class TestingAbstractChunkOutputBuilder extends AbstractChunkOutputBuilder {
+    public function getDiff(array $diff)
+    {
+        return '';
+    }
+
+    public function getChunks(array $diff, $lineThreshold)
+    {
+        return $this->getCommonChunks($diff, $lineThreshold);
+    }
+};
 
 /**
  * @covers PhpCsFixer\Diff\v3_0\Output\AbstractChunkOutputBuilder
@@ -30,19 +42,9 @@ final class AbstractChunkOutputBuilderTest extends TestCase
      *
      * @dataProvider provideGetCommonChunks
      */
-    public function testGetCommonChunks(array $expected, string $from, string $to, int $lineThreshold = 5): void
+    public function testGetCommonChunks(array $expected, $from, $to, $lineThreshold = 5)
     {
-        $output = new class extends AbstractChunkOutputBuilder {
-            public function getDiff(array $diff): string
-            {
-                return '';
-            }
-
-            public function getChunks(array $diff, $lineThreshold)
-            {
-                return $this->getCommonChunks($diff, $lineThreshold);
-            }
-        };
+        $output = new TestingAbstractChunkOutputBuilder();
 
         $this->assertSame(
             $expected,
@@ -50,7 +52,7 @@ final class AbstractChunkOutputBuilderTest extends TestCase
         );
     }
 
-    public function provideGetCommonChunks(): array
+    public function provideGetCommonChunks()
     {
         return[
             'same (with default threshold)' => [

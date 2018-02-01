@@ -1,4 +1,4 @@
-<?php declare(strict_types=1);
+<?php
 /*
  * This file is part of sebastian/diff.
  *
@@ -22,22 +22,22 @@ final class LineTest extends TestCase
      */
     private $line;
 
-    protected function setUp(): void
+    protected function setUp()
     {
         $this->line = new Line;
     }
 
-    public function testCanBeCreatedWithoutArguments(): void
+    public function testCanBeCreatedWithoutArguments()
     {
         $this->assertInstanceOf(Line::class, $this->line);
     }
 
-    public function testTypeCanBeRetrieved(): void
+    public function testTypeCanBeRetrieved()
     {
         $this->assertSame(Line::UNCHANGED, $this->line->getType());
     }
 
-    public function testContentCanBeRetrieved(): void
+    public function testContentCanBeRetrieved()
     {
         $this->assertSame('', $this->line->getContent());
     }

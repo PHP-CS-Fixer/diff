@@ -1,4 +1,4 @@
-<?php declare(strict_types=1);
+<?php
 /*
  * This file is part of sebastian/diff.
  *
@@ -24,14 +24,14 @@ final class UnifiedDiffAssertTraitIntegrationTest extends TestCase
 
     private $filePatch;
 
-    protected function setUp(): void
+    protected function setUp()
     {
         $this->filePatch = __DIR__ . '/../fixtures/out/patch.txt';
 
         $this->cleanUpTempFiles();
     }
 
-    protected function tearDown(): void
+    protected function tearDown()
     {
         $this->cleanUpTempFiles();
     }
@@ -42,7 +42,7 @@ final class UnifiedDiffAssertTraitIntegrationTest extends TestCase
      *
      * @dataProvider provideFilePairsCases
      */
-    public function testValidPatches(string $fileFrom, string $fileTo): void
+    public function testValidPatches($fileFrom, $fileTo)
     {
         $command = \sprintf(
             'diff -u %s %s > %s',
@@ -81,7 +81,7 @@ final class UnifiedDiffAssertTraitIntegrationTest extends TestCase
     /**
      * @return array<string, array<string, string>>
      */
-    public function provideFilePairsCases(): array
+    public function provideFilePairsCases()
     {
         $cases = [];
 
@@ -122,7 +122,7 @@ final class UnifiedDiffAssertTraitIntegrationTest extends TestCase
         return $cases;
     }
 
-    private function cleanUpTempFiles(): void
+    private function cleanUpTempFiles()
     {
         @\unlink($this->filePatch);
     }
