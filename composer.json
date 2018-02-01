@@ -33,6 +33,7 @@
         "psr-4": {
             "PhpCsFixer\\Diff\\v1_4\\Tests\\": "tests/v1_4",
             "PhpCsFixer\\Diff\\v2_0\\Tests\\": "tests/v2_0",
+            "PhpCsFixer\\Diff\\v3_0\\": "tests/v3_0",
             "PhpCsFixer\\Diff\\GeckoPackages\\DiffOutputBuilder\\Tests\\": "tests/GeckoPackages/DiffOutputBuilder/Tests",
             "PhpCsFixer\\Diff\\GeckoPackages\\DiffOutputBuilder\\Utils\\": "tests/GeckoPackages/DiffOutputBuilder/Utils"
         }
