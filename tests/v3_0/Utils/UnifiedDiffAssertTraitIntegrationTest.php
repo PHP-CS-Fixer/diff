@@ -102,7 +102,7 @@ final class UnifiedDiffAssertTraitIntegrationTest extends TestCase
         }
 
         // create cases based on PHP files within the vendor directory for integration testing
-        $dir       = \realpath(__DIR__ . '/../../vendor');
+        $dir       = \realpath(__DIR__ . '/../../../vendor');
         $dirLength = \strlen($dir);
 
         $fileIterator = new \RecursiveIteratorIterator(new \RecursiveDirectoryIterator($dir, \RecursiveDirectoryIterator::SKIP_DOTS));

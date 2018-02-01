@@ -162,7 +162,7 @@ final class StrictUnifiedDiffOutputBuilderIntegrationTest extends TestCase
     {
         $cases     = [];
         $fromFile  = __FILE__;
-        $vendorDir = \realpath(__DIR__ . '/../../../vendor');
+        $vendorDir = \realpath(__DIR__ . '/../../../../vendor');
 
         $fileIterator = new \RecursiveIteratorIterator(new \RecursiveDirectoryIterator($vendorDir, \RecursiveDirectoryIterator::SKIP_DOTS));
 
