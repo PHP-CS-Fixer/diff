@@ -21,7 +21,7 @@
         "php": "^5.6 || ^7.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "^4.8.35 || ^5.4.3",
+        "phpunit/phpunit": "^5.7.23 || ^6.4.3",
         "symfony/process": "^3.3"
     },
     "autoload": {
@@ -33,6 +33,7 @@
         "psr-4": {
             "PhpCsFixer\\Diff\\v1_4\\Tests\\": "tests/v1_4",
             "PhpCsFixer\\Diff\\v2_0\\Tests\\": "tests/v2_0",
+            "PhpCsFixer\\Diff\\v3_0\\": "tests/v3_0",
             "PhpCsFixer\\Diff\\GeckoPackages\\DiffOutputBuilder\\Tests\\": "tests/GeckoPackages/DiffOutputBuilder/Tests",
             "PhpCsFixer\\Diff\\GeckoPackages\\DiffOutputBuilder\\Utils\\": "tests/GeckoPackages/DiffOutputBuilder/Utils"
         }
