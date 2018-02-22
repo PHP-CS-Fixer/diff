@@ -1,6 +1,6 @@
 {
     "name": "php-cs-fixer/diff",
-    "description": "sebastian/diff v2 backport support for PHP5.6",
+    "description": "sebastian/diff v3 backport support for PHP 5.6+",
     "keywords": ["diff"],
     "homepage": "https://github.com/PHP-CS-Fixer",
     "license": "BSD-3-Clause",
@@ -24,6 +24,10 @@
         "phpunit/phpunit": "^5.7.23 || ^6.4.3",
         "symfony/process": "^3.3"
     },
+    "config": {
+        "optimize-autoloader": true,
+        "sort-packages": true
+    },
     "autoload": {
         "classmap": [
             "src/"
@@ -31,11 +35,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "PhpCsFixer\\Diff\\v1_4\\Tests\\": "tests/v1_4",
-            "PhpCsFixer\\Diff\\v2_0\\Tests\\": "tests/v2_0",
-            "PhpCsFixer\\Diff\\v3_0\\": "tests/v3_0",
-            "PhpCsFixer\\Diff\\GeckoPackages\\DiffOutputBuilder\\Tests\\": "tests/GeckoPackages/DiffOutputBuilder/Tests",
-            "PhpCsFixer\\Diff\\GeckoPackages\\DiffOutputBuilder\\Utils\\": "tests/GeckoPackages/DiffOutputBuilder/Utils"
+            "PhpCsFixer\\Diff\\": "tests"
         }
     }
 }
