@@ -21,6 +21,7 @@ use Symfony\Component\Process\Process;
  *
  * @uses PhpCsFixer\Diff\Differ
  * @uses PhpCsFixer\Diff\TimeEfficientLongestCommonSubsequenceCalculator
+ * @uses PhpCsFixer\Diff\MemoryEfficientLongestCommonSubsequenceCalculator
  *
  * @requires OS Linux
  */
