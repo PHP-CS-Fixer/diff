@@ -19,6 +19,8 @@ use PhpCsFixer\Diff\Utils\UnifiedDiffAssertTrait;
  * @covers PhpCsFixer\Diff\Output\StrictUnifiedDiffOutputBuilder
  *
  * @uses PhpCsFixer\Diff\Differ
+ * @uses PhpCsFixer\Diff\TimeEfficientLongestCommonSubsequenceCalculator
+ * @uses PhpCsFixer\Diff\ConfigurationException
  */
 final class StrictUnifiedDiffOutputBuilderTest extends TestCase
 {

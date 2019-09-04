@@ -14,6 +14,8 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * @covers PhpCsFixer\Diff\Chunk
+ *
+ * @uses PhpCsFixer\Diff\Line
  */
 final class ChunkTest extends TestCase
 {
@@ -25,6 +27,11 @@ final class ChunkTest extends TestCase
     protected function setUp()
     {
         $this->chunk = new Chunk;
+    }
+
+    public function testHasInitiallyNoLines()
+    {
+        $this->assertSame([], $this->chunk->getLines());
     }
 
     public function testCanBeCreatedWithoutArguments()
@@ -59,10 +66,10 @@ final class ChunkTest extends TestCase
 
     public function testLinesCanBeSet()
     {
-        $this->assertSame([], $this->chunk->getLines());
+        $lines = [new Line(Line::ADDED, 'added'), new Line(Line::REMOVED, 'removed')];
 
-        $testValue = ['line0', 'line1'];
-        $this->chunk->setLines($testValue);
-        $this->assertSame($testValue, $this->chunk->getLines());
+        $this->chunk->setLines($lines);
+
+        $this->assertSame($lines, $this->chunk->getLines());
     }
 }
