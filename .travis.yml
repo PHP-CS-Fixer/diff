@@ -16,6 +16,8 @@ matrix:
           env: COMPOSER_FLAGS="--prefer-stable"
         - php: 7.2
           env: COMPOSER_FLAGS="--prefer-stable"
+        - php: 7.3
+          env: COMPOSER_FLAGS="--prefer-stable"
         - php: nightly
           env: COMPOSER_FLAGS="--dev --ignore-platform-reqs"
     allow_failures:
