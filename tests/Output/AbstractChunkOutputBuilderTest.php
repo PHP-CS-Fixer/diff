@@ -13,7 +13,8 @@ namespace PhpCsFixer\Diff\Output;
 use PHPUnit\Framework\TestCase;
 use PhpCsFixer\Diff\Differ;
 
-class TestingAbstractChunkOutputBuilder extends AbstractChunkOutputBuilder {
+class TestingAbstractChunkOutputBuilder extends AbstractChunkOutputBuilder
+{
     public function getDiff(array $diff)
     {
         return '';
@@ -23,7 +24,7 @@ class TestingAbstractChunkOutputBuilder extends AbstractChunkOutputBuilder {
     {
         return $this->getCommonChunks($diff, $lineThreshold);
     }
-};
+}
 
 /**
  * @covers PhpCsFixer\Diff\Output\AbstractChunkOutputBuilder

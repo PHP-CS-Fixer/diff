@@ -22,7 +22,7 @@ return PhpCsFixer\Config::create()
             'braces' => true,
             'cast_spaces' => true,
             'concat_space' => ['spacing' => 'one'],
-            'declare_strict_types' => true,
+            'declare_strict_types' => false,
             'elseif' => true,
             'encoding' => true,
             'full_opening_tag' => true,
