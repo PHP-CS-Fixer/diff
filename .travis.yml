@@ -20,6 +20,8 @@ matrix:
           env: COMPOSER_FLAGS="--prefer-stable"
         - php: 7.4
           env: COMPOSER_FLAGS="--prefer-stable"
+        - php: nightly # rename to 8.0 once available
+          env: COMPOSER_FLAGS="--prefer-stable"
         - php: nightly
           env: COMPOSER_FLAGS="--dev --ignore-platform-reqs"
     allow_failures:
