@@ -87,4 +87,28 @@ final class UnifiedDiffOutputBuilderTest extends TestCase
     {
         return UnifiedDiffOutputBuilderDataProvider::provideDiffWithLineNumbers();
     }
+
+    /**
+     * @param string $from
+     * @param string $to
+     *
+     * @dataProvider provideStringsThatAreTheSame
+     */
+    public function testEmptyDiffProducesEmptyOutput($from, $to)
+    {
+        $differ = new Differ(new UnifiedDiffOutputBuilder('', false));
+        $output = $differ->diff($from, $to);
+        $this->assertEmpty($output);
+    }
+
+    public function provideStringsThatAreTheSame()
+    {
+        return [
+            ['', ''],
+            ['a', 'a'],
+            ['these strings are the same', 'these strings are the same'],
+            ["\n", "\n"],
+            ["multi-line strings\nare the same", "multi-line strings\nare the same"]
+        ];
+    }
 }

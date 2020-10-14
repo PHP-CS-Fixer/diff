@@ -304,6 +304,35 @@ final class StrictUnifiedDiffOutputBuilderTest extends TestCase
     }
 
     /**
+     * @param string $from
+     * @param string $to
+     *
+     * @dataProvider provideSameEmptyDiff
+     */
+    public function testSameEmptyDiff($from, $to)
+    {
+        $builder = new StrictUnifiedDiffOutputBuilder([
+            'fromFile' => 'input.txt',
+            'toFile'   => 'output.txt',
+        ]);
+
+        $differ = new Differ($builder);
+
+        $this->assertSame(
+            '',
+            $differ->diff($from, $to)
+        );
+    }
+
+    public function provideSameEmptyDiff()
+    {
+        return [
+            ['', ''],
+            ['a', 'a'],
+        ];
+    }
+
+    /**
      * @param array  $options
      * @param string $message
      *
