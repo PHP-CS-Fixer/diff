@@ -12,17 +12,10 @@ return PhpCsFixer\Config::create()
     ->setRiskyAllowed(true)
     ->setRules(
         [
-            'array_syntax' => ['syntax' => 'short'],
-            'binary_operator_spaces' => [
-                'align_double_arrow' => true,
-                'align_equals' => true
-            ],
             'blank_line_after_namespace' => true,
             'blank_line_before_return' => true,
             'braces' => true,
             'cast_spaces' => true,
-            'concat_space' => ['spacing' => 'one'],
-            'declare_strict_types' => true,
             'elseif' => true,
             'encoding' => true,
             'full_opening_tag' => true,
@@ -60,7 +53,6 @@ return PhpCsFixer\Config::create()
             'phpdoc_trim' => true,
             'phpdoc_types' => true,
             'phpdoc_var_without_name' => true,
-            'pow_to_exponentiation' => true,
             'self_accessor' => true,
             'simplified_null_return' => true,
             'single_blank_line_at_eof' => true,

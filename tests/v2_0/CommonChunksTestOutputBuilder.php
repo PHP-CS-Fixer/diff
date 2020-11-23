@@ -7,13 +7,13 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-
 namespace PhpCsFixer\Diff\v2_0\Tests;
 
 use PhpCsFixer\Diff\v2_0\Output\AbstractChunkOutputBuilder;
 
 /**
  * @author SpacePossum
+ *
  * @internal
  */
 final class CommonChunksTestOutputBuilder extends AbstractChunkOutputBuilder

@@ -1,49 +1,45 @@
 <?php
-
 /*
- * This file is part of the GeckoPackages.
+ * This file is part of sebastian/diff.
  *
- * (c) GeckoPackages https://github.com/GeckoPackages
+ * (c) Sebastian Bergmann <sebastian@phpunit.de>
  *
- * This source file is subject to the MIT license that is bundled
- * with this source code in the file LICENSE.
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
-
 namespace PhpCsFixer\Diff\GeckoPackages\DiffOutputBuilder\Utils;
 
 use PHPUnit\Framework\TestCase;
 use PHPUnit_Framework_TestCase;
 
-/**
- * @author SpacePossum
- *
- * @internal
- */
-trait PHPUnitPolyfill
-{
-    public function expectException($exception)
+if (\method_exists(TestCase::class, 'expectException')) {
+    trait PHPUnitPolyfill
     {
-        if (\method_exists(TestCase::class, 'expectException')) {
-            return parent::expectException($exception);
+    }
+} else {
+    /**
+     * @author SpacePossum
+     *
+     * @internal
+     */
+    trait PHPUnitPolyfill
+    {
+        public function expectException($exception)
+        {
+            $this->wellYeahShipIt('expectedException', $exception);
         }
 
-        $this->wellYeahShipIt('expectedException', $exception);
-    }
-
-    public function expectExceptionMessageRegExp($messageRegExp)
-    {
-        if (\method_exists(TestCase::class, 'expectExceptionMessageRegExp')) {
-            return parent::expectExceptionMessageRegExp($messageRegExp);
+        public function expectExceptionMessageRegExp($messageRegExp)
+        {
+            $this->wellYeahShipIt('expectedExceptionMessageRegExp', $messageRegExp);
         }
 
-        $this->wellYeahShipIt('expectedExceptionMessageRegExp', $messageRegExp);
-    }
-
-    private function wellYeahShipIt($key, $value)
-    {
-        $self = new \ReflectionClass(PHPUnit_Framework_TestCase::class);
-        $property = $self->getProperty($key);
-        $property->setAccessible(true);
-        $property->setValue($this, $value);
+        private function wellYeahShipIt($key, $value)
+        {
+            $self = new \ReflectionClass(PHPUnit_Framework_TestCase::class);
+            $property = $self->getProperty($key);
+            $property->setAccessible(true);
+            $property->setValue($this, $value);
+        }
     }
 }

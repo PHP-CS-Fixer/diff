@@ -7,13 +7,13 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-
 namespace PhpCsFixer\Diff\v3_0\Output;
 
 use PHPUnit\Framework\TestCase;
 use PhpCsFixer\Diff\v3_0\Differ;
 
-class TestingAbstractChunkOutputBuilder extends AbstractChunkOutputBuilder {
+class TestingAbstractChunkOutputBuilder extends AbstractChunkOutputBuilder
+{
     public function getDiff(array $diff)
     {
         return '';
@@ -23,7 +23,7 @@ class TestingAbstractChunkOutputBuilder extends AbstractChunkOutputBuilder {
     {
         return $this->getCommonChunks($diff, $lineThreshold);
     }
-};
+}
 
 /**
  * @covers PhpCsFixer\Diff\v3_0\Output\AbstractChunkOutputBuilder

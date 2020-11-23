@@ -7,7 +7,6 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-
 namespace PhpCsFixer\Diff\v1_4;
 
 use PHPUnit\Framework\TestCase;
@@ -74,7 +73,7 @@ class ParserTest extends TestCase
 
     public function testParseWithRemovedLines()
     {
-        $content = <<<A
+        $content = <<<DIFF_TEST
 diff --git a/Test.txt b/Test.txt
 index abcdefg..abcdefh 100644
 --- a/Test.txt
@@ -82,7 +81,8 @@ index abcdefg..abcdefh 100644
 @@ -49,9 +49,8 @@
  A
 -B
-A;
+DIFF_TEST;
+
         $diffs = $this->parser->parse($content);
         $this->assertInternalType('array', $diffs);
         $this->assertContainsOnlyInstancesOf('PhpCsFixer\Diff\v1_4\Diff', $diffs);
@@ -117,7 +117,7 @@ A;
 
     public function testParseDiffForMulitpleFiles()
     {
-        $content = <<<A
+        $content = <<<DIFF_TEST
 diff --git a/Test.txt b/Test.txt
 index abcdefg..abcdefh 100644
 --- a/Test.txt
@@ -133,7 +133,8 @@ index abcdefg..abcdefh 100644
 @@ -1,2 +1,3 @@
  A
 +B
-A;
+DIFF_TEST;
+
         $diffs = $this->parser->parse($content);
         $this->assertCount(2, $diffs);
 
